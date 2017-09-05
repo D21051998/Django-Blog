@@ -1,0 +1,459 @@
+Microsoft Windows [Version 10.0.15063]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\Users\Deepanshu Jain>cd Documents
+
+C:\Users\Deepanshu Jain\Documents>cd venv1
+
+C:\Users\Deepanshu Jain\Documents\venv1>cd env1
+
+C:\Users\Deepanshu Jain\Documents\venv1\env1>Scripts\activate
+
+(env1) C:\Users\Deepanshu Jain\Documents\venv1\env1>cd ..
+
+(env1) C:\Users\Deepanshu Jain\Documents\venv1>cd ..
+
+(env1) C:\Users\Deepanshu Jain\Documents>cd djangoprojects
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects>cd blogme
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>dir
+ Volume in drive C is Windows8_OS
+ Volume Serial Number is 14A6-0BA0
+
+ Directory of C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme
+
+09/04/2017  10:50 PM    <DIR>          .
+09/04/2017  10:50 PM    <DIR>          ..
+09/04/2017  10:50 PM    <DIR>          blog
+09/04/2017  10:33 PM    <DIR>          blogme
+09/04/2017  10:33 PM           131,072 db.sqlite3
+09/04/2017  09:59 PM               826 manage.py
+               2 File(s)        131,898 bytes
+               4 Dir(s)  178,845,270,016 bytes free
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py makemigrations blog
+Migrations for 'blog':
+  blog\migrations\0001_initial.py
+    - Create model Post
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py sqlmigrate blog 001
+CommandError: Cannot find a migration matching '001' from app 'blog'. Is it in INSTALLED_APPS?
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py sqlmigrate blog 0001
+BEGIN;
+--
+-- Create model Post
+--
+CREATE TABLE "blog_post" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "title" varchar(250) NOT NULL, "slug" varchar(250) NOT NULL, "body" text NOT NULL, "publish" datetime NOT NULL, "created" datetime NOT NULL, "updated" datetime NOT NULL, "status" varchar(10) NOT NULL, "author_id" integer NOT NULL REFERENCES "auth_user" ("id"));
+CREATE INDEX "blog_post_slug_b95473f2" ON "blog_post" ("slug");
+CREATE INDEX "blog_post_author_id_dd7a8485" ON "blog_post" ("author_id");
+COMMIT;
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, blog, contenttypes, sessions
+Running migrations:
+  Applying blog.0001_initial... OK
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py createsuperuser
+Username (leave blank to use 'deepanshujain'): d21051998
+Email address: deepanshujain1234@live.com
+Password:
+Password (again):
+Error: Your passwords didn't match.
+Password:
+Password (again):
+Superuser created successfully.
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py runserer
+Unknown command: 'runserer'
+Type 'manage.py help' for usage.
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:39:30
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:39:36] "GET / HTTP/1.1" 200 1716
+Not Found: /favicon.ico
+[05/Sep/2017 08:39:38] "GET /favicon.ico HTTP/1.1" 404 1962
+[05/Sep/2017 08:39:42] "GET /admin/ HTTP/1.1" 302 0
+[05/Sep/2017 08:39:43] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1650
+[05/Sep/2017 08:39:50] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[05/Sep/2017 08:39:50] "GET /admin/ HTTP/1.1" 200 3401
+[05/Sep/2017 08:39:54] "GET /admin/blog/post/ HTTP/1.1" 200 3022
+[05/Sep/2017 08:39:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:39:58] "GET /admin/ HTTP/1.1" 200 3401
+[05/Sep/2017 08:40:07] "GET /admin/auth/user/ HTTP/1.1" 200 6477
+[05/Sep/2017 08:40:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:40:07] "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+[05/Sep/2017 08:40:07] "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+[05/Sep/2017 08:40:07] "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+[05/Sep/2017 08:40:15] "GET /admin/ HTTP/1.1" 200 3401
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:40:27
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:40:30
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:40:30] "GET /admin/ HTTP/1.1" 200 2783
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:40:35
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:40:36] "GET /admin/ HTTP/1.1" 200 3401
+[05/Sep/2017 08:40:46] "GET /admin/blog/post/add/ HTTP/1.1" 200 7431
+[05/Sep/2017 08:40:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:40:46] "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 20529
+[05/Sep/2017 08:40:46] "GET /static/admin/js/calendar.js HTTP/1.1" 200 7790
+[05/Sep/2017 08:40:46] "GET /static/admin/js/change_form.js HTTP/1.1" 200 712
+[05/Sep/2017 08:40:46] "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 495
+[05/Sep/2017 08:40:46] "GET /static/admin/css/widgets.css HTTP/1.1" 200 10340
+[05/Sep/2017 08:40:47] "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+[05/Sep/2017 08:40:47] "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+[05/Sep/2017 08:41:22] "POST /admin/blog/post/add/ HTTP/1.1" 302 0
+[05/Sep/2017 08:41:22] "GET /admin/blog/post/ HTTP/1.1" 200 4329
+[05/Sep/2017 08:41:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:41:34] "GET /admin/blog/post/1/change/ HTTP/1.1" 200 7696
+[05/Sep/2017 08:41:34] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:41:37] "GET /admin/blog/post/ HTTP/1.1" 200 4150
+[05/Sep/2017 08:41:45] "GET /admin/blog/post/1/change/ HTTP/1.1" 200 7696
+[05/Sep/2017 08:41:45] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:41:59] "GET /admin/blog/post/ HTTP/1.1" 200 4150
+[05/Sep/2017 08:41:59] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:42:05] "GET /admin/blog/post/add/ HTTP/1.1" 200 7431
+[05/Sep/2017 08:42:05] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:42:23] "POST /admin/blog/post/add/ HTTP/1.1" 302 0
+[05/Sep/2017 08:42:24] "GET /admin/blog/post/ HTTP/1.1" 200 4552
+[05/Sep/2017 08:42:24] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:43:16
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:44:02
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:44:05
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:44:08] "GET /admin/blog/post/ HTTP/1.1" 200 4373
+[05/Sep/2017 08:44:08] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:44:15] "POST /admin/blog/post/ HTTP/1.1" 302 0
+[05/Sep/2017 08:44:15] "GET /admin/blog/post/ HTTP/1.1" 200 4484
+[05/Sep/2017 08:44:15] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:44:16] "GET /static/admin/img/icon-alert.svg HTTP/1.1" 200 504
+[05/Sep/2017 08:44:22] "POST /admin/blog/post/ HTTP/1.1" 200 3265
+[05/Sep/2017 08:44:22] "GET /static/admin/js/cancel.js HTTP/1.1" 200 204
+[05/Sep/2017 08:44:24] "POST /admin/blog/post/ HTTP/1.1" 302 0
+[05/Sep/2017 08:44:24] "GET /admin/blog/post/ HTTP/1.1" 200 3143
+[05/Sep/2017 08:44:24] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:44:26] "GET /admin/blog/post/add/ HTTP/1.1" 200 7431
+[05/Sep/2017 08:44:26] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:44:37] "POST /admin/blog/post/add/ HTTP/1.1" 302 0
+[05/Sep/2017 08:44:37] "GET /admin/blog/post/ HTTP/1.1" 200 4329
+[05/Sep/2017 08:44:37] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:45:31
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+^C
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py makemigrations blog
+Migrations for 'blog':
+  blog\migrations\0002_auto_20170905_0845.py
+    - Change Meta options on post
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, blog, contenttypes, sessions
+Running migrations:
+  Applying blog.0002_auto_20170905_0845... OK
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py runserer
+Unknown command: 'runserer'
+Type 'manage.py help' for usage.
+
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:46:11
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:46:16] "GET /admin/ HTTP/1.1" 200 4778
+[05/Sep/2017 08:46:20] "GET /admin/blog/post/add/ HTTP/1.1" 200 7431
+[05/Sep/2017 08:46:20] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:46:39] "POST /admin/blog/post/add/ HTTP/1.1" 302 0
+[05/Sep/2017 08:46:40] "GET /admin/blog/post/ HTTP/1.1" 200 4540
+[05/Sep/2017 08:46:40] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+Performing system checks...
+
+^C
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:51:33
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:51:37] "GET /admin/blog/post/ HTTP/1.1" 200 5586
+[05/Sep/2017 08:51:37] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:51:46] "GET /admin/blog/post/?o= HTTP/1.1" 200 5415
+[05/Sep/2017 08:51:46] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:51:50] "GET /admin/blog/post/ HTTP/1.1" 200 5586
+[05/Sep/2017 08:51:52] "GET /admin/blog/post/?o=4 HTTP/1.1" 200 5660
+[05/Sep/2017 08:51:52] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:51:54] "GET /admin/blog/post/?o=-4 HTTP/1.1" 200 5667
+[05/Sep/2017 08:51:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+Performing system checks...
+
+Unhandled exception in thread started by <function check_errors.<locals>.wrapper at 0x000002109935AF28>
+Traceback (most recent call last):
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\utils\autoreload.py", line 228, in wrapper
+    fn(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\core\management\commands\runserver.py", line 125, in inner_run
+    self.check(display_num_errors=True)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\core\management\base.py", line 405, in check
+    raise SystemCheckError(msg)
+django.core.management.base.SystemCheckError: SystemCheckError: System check identified some issues:
+
+ERRORS:
+<class 'blog.admin.PostAdmin'>: (admin.E026) The value of 'prepopulated_fields' must be a dictionary.
+
+System check identified 1 issue (0 silenced).
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:53:09
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:53:14
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:53:17] "GET /admin/blog/post/?o=-4 HTTP/1.1" 200 8281
+[05/Sep/2017 08:53:17] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:53:25] "GET /admin/blog/post/?q=Slug&o=-4 HTTP/1.1" 200 6210
+[05/Sep/2017 08:53:25] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:53:28] "GET /admin/blog/post/?o=-4 HTTP/1.1" 200 8281
+[05/Sep/2017 08:53:31] "GET /admin/blog/post/?q=Title&o=-4 HTTP/1.1" 200 8229
+[05/Sep/2017 08:53:31] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:53:33] "GET /admin/blog/post/?o=-4 HTTP/1.1" 200 8281
+[05/Sep/2017 08:54:15] "GET /admin/blog/post/?o=-4&publish__day=5&publish__month=9&publish__year=2017 HTTP/1.1" 200 9526
+[05/Sep/2017 08:54:15] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:54:18] "GET /admin/blog/post/?o=-4 HTTP/1.1" 200 8281
+[05/Sep/2017 08:54:51] "GET /admin/blog/post/?o=4 HTTP/1.1" 200 8258
+[05/Sep/2017 08:54:54] "GET /admin/blog/post/add/?_changelist_filters=o%3D4 HTTP/1.1" 200 7174
+[05/Sep/2017 08:54:54] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:55:02] "GET /admin/auth/user/?_to_field=id&_popup=1 HTTP/1.1" 200 5449
+[05/Sep/2017 08:55:09] "GET /admin/auth/user/?_to_field=id&_popup=1 HTTP/1.1" 200 5449
+[05/Sep/2017 08:55:15] "POST /admin/blog/post/add/?_changelist_filters=o%3D4 HTTP/1.1" 200 7426
+[05/Sep/2017 08:55:15] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+[05/Sep/2017 08:55:22] "POST /admin/blog/post/add/?_changelist_filters=o%3D4 HTTP/1.1" 302 0
+[05/Sep/2017 08:55:22] "GET /admin/blog/post/?o=4 HTTP/1.1" 200 8844
+[05/Sep/2017 08:55:22] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+Performing system checks...
+
+System check identified no issues (0 silenced).
+September 05, 2017 - 08:57:05
+Django version 1.11.4, using settings 'blogme.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.
+[05/Sep/2017 08:57:07] "GET /admin/blog/post/?o=4 HTTP/1.1" 200 8672
+[05/Sep/2017 08:57:07] "GET /admin/jsi18n/ HTTP/1.1" 200 3189
+^C
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python
+Python 3.6.2 (v3.6.2:5fd33b5, Jul  8 2017, 04:57:36) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from django.contrib.auth.models import User
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\contrib\auth\models.py", line 4, in <module>
+    from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\contrib\auth\base_user.py", line 52, in <module>
+    class AbstractBaseUser(models.Model):
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\contrib\auth\base_user.py", line 53, in AbstractBaseUser
+    password = models.CharField(_('password'), max_length=128)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\fields\__init__.py", line 1061, in __init__
+    super(CharField, self).__init__(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\fields\__init__.py", line 172, in __init__
+    self.db_tablespace = db_tablespace or settings.DEFAULT_INDEX_TABLESPACE
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\conf\__init__.py", line 56, in __getattr__
+    self._setup(name)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\conf\__init__.py", line 39, in _setup
+    % (desc, ENVIRONMENT_VARIABLE))
+django.core.exceptions.ImproperlyConfigured: Requested setting DEFAULT_INDEX_TABLESPACE, but settings are not configured. You must either define the environment variable DJANGO_SETTINGS_MODULE or call settings.configure() before accessing settings.
+>>> ^C
+(env1) C:\Users\Deepanshu Jain\Documents\djangoprojects\blogme>python manage.py shell
+Python 3.6.2 (v3.6.2:5fd33b5, Jul  8 2017, 04:57:36) [MSC v.1900 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from django.contrib.auth.models import User
+>>> from blog.models import Post
+>>> user = User.objects.get(username='admin')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+>>> user = User.objects.get(username='admin')
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+django.contrib.auth.models.DoesNotExist: User matching query does not exist.
+>>> user = User.objects.get(username='d21051998')
+>>> Post.objects.create(title='One more post', slug = 'one-more-post', body = 'Post body',author=user)
+<Post: One more post>
+>>> Post.title = "New Title"
+>>> all_posts = Post.objects.all()
+>>> Post.obejcts.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Post' has no attribute 'obejcts'
+>>> Post.objects.all()
+<QuerySet [<Post: One more post>, <Post: Demo>, <Post: Title>, <Post: Django demo>]>
+>>> Post.objects.filter(publish_year=2016)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+django.core.exceptions.FieldError: Cannot resolve keyword 'publish_year' into field. Choices are: author, author_id, body, created, id, publish, slug, status, title, updated
+>>> Post.objects.filter(publish=2016)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1210, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\sql\query.py", line 1104, in build_lookup
+    return final_lookup(lhs, rhs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\lookups.py", line 24, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\lookups.py", line 74, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\fields\__init__.py", line 1438, in get_prep_value
+    value = super(DateTimeField, self).get_prep_value(value)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\fields\__init__.py", line 1296, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\fields\__init__.py", line 1399, in to_python
+    parsed = parse_datetime(value)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\utils\dateparse.py", line 94, in parse_datetime
+    match = datetime_re.match(value)
+TypeError: expected string or bytes-like object
+>>> Post.objects.filter(publish__year=2016)
+<QuerySet []>
+>>> Post.objects.filter(publish__year=2017)
+<QuerySet [<Post: One more post>, <Post: Demo>, <Post: Title>, <Post: Django demo>]>
+>>> Post.objects.filter(publish__year=2017)\
+... .filter(author__username='D21051998')
+<QuerySet []>
+>>> Post.objects.filter(publish__year=2017)\
+... .filter(author__username='d21051998')
+<QuerySet [<Post: One more post>, <Post: Demo>, <Post: Title>, <Post: Django demo>]>
+>>> Post.objects.filter(publish__year=2017)\
+... .exclude(title__startswith = 'why')
+<QuerySet [<Post: One more post>, <Post: Demo>, <Post: Title>, <Post: Django demo>]>
+>>> post  = Post.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Post matching query does not exist.
+>>> post  = Post.objects.get(id=2)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Post matching query does not exist.
+>>> post  = Post.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Post matching query does not exist.
+>>> post  = Post.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Post matching query does not exist.
+>>> Post.objects.all()
+<QuerySet [<Post: One more post>, <Post: Demo>, <Post: Title>, <Post: Django demo>]>
+>>> Post.objects.get(id=1)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\DEEPAN~1\DOCUME~1\venv1\env1\lib\site-packages\django\db\models\query.py", line 380, in get
+    self.model._meta.object_name
+blog.models.DoesNotExist: Post matching query does not exist.
+>>> post  = Post.objects.get(id=1)
